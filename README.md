@@ -4,7 +4,7 @@ Cruelty Squad mod that shows time elapsed and current rank when you're playing a
 
 ## Install
 
-1. Download the latest release
+1. Download the [latest release](https://github.com/crustyrashky/ShowElapsedMapTime/releases/download/1.0/ShowElapsedMapTime.zip)
 2. Extract `Show Elapsed Map Time` folder to `%appdata%\Godot\app_userdata\Cruelty Squad\mods`
  
  
