@@ -71,6 +71,49 @@ onready  var health_texture = $UI_HBOX / TextureRect
 var notify:Label
 
 
+var rank_arr = [Global.LEVEL_RANK_S,
+				Global.LEVEL_RANK_A,
+				Global.LEVEL_RANK_B]
+
+func init_timebox():
+	if Global.stock_mode:
+		rank_arr[0] = Global.LEVEL_SRANK_S
+	if Global.hope_discarded:
+		rank_arr = [Global.HELL_RANK_S,
+					Global.HELL_RANK_A,
+					Global.HELL_RANK_B]
+		if Global.stock_mode:
+			rank_arr[0] = Global.HELL_SRANK_S
+
+func set_timebox():
+	$Timervbox / HBoxContainer / Level_time.text = " " + str(Global.level_time)
+	$Timervbox / HBoxContainer / Rank.value = Global.level_time_raw
+
+	if rank_arr[0][Global.CURRENT_LEVEL] == 0:
+		$Timervbox / HBoxContainer / Rank.min_value = 0
+		$Timervbox / HBoxContainer / Rank.max_value = 1
+		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[4]
+		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[4]
+	if Global.level_time_raw < rank_arr[0][Global.CURRENT_LEVEL]:
+		$Timervbox / HBoxContainer / Rank.min_value = 0
+		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[0][Global.CURRENT_LEVEL]
+		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[0]
+		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[1]
+	elif Global.level_time_raw < rank_arr[1][Global.CURRENT_LEVEL]:
+		$Timervbox / HBoxContainer / Rank.min_value = rank_arr[0][Global.CURRENT_LEVEL]
+		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[1][Global.CURRENT_LEVEL]
+		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[1]
+		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[2]
+	elif Global.level_time_raw < rank_arr[2][Global.CURRENT_LEVEL]:
+		$Timervbox / HBoxContainer / Rank.min_value = rank_arr[1][Global.CURRENT_LEVEL]
+		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[2][Global.CURRENT_LEVEL]
+		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[2]
+		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[3]
+	else:
+		$Timervbox / HBoxContainer / Rank.min_value = 0
+		$Timervbox / HBoxContainer / Rank.max_value = 1
+		
+
 func _ready():
 	for i in range(0, len(RANK_TEXTURES)):
 		var img = RANK_TEXTURES[i].get_data()
@@ -78,6 +121,7 @@ func _ready():
 		var nt = ImageTexture.new()
 		nt.create_from_image(img)
 		RANK_TEXTURES[i] = nt
+	init_timebox()
 	reload_font = $Notification_Box / Notification_Label.get_font("font")
 	Global.UI = self
 	Global.enemy_count = 0
@@ -221,51 +265,6 @@ func set_ammo(ammo, mag_ammo, max_mag_ammo, max_ammo):
 	max_mag_ammo_c = max_mag_ammo
 	$Ammovbox / HBoxContainer / Mag_Ammo.text = str(mag_ammo)
 
-func set_timebox():
-	$Timervbox / HBoxContainer / Level_time.text = " " + str(Global.level_time)
-	$Timervbox / HBoxContainer / Rank.value = Global.level_time_raw
-	
-	var rank_arr = [Global.LEVEL_RANK_S,
-					Global.LEVEL_RANK_A,
-					Global.LEVEL_RANK_B]
-	match int(Global.hope_discarded) << 0 + int(Global.stock_mode) << 1:
-		1:
-			rank_arr = [Global.HELL_RANK_S,
-						Global.HELL_RANK_A,
-						Global.HELL_RANK_B]
-		2:
-			rank_arr = [Global.LEVEL_SRANK_S,
-						Global.LEVEL_SRANK_A,
-						Global.LEVEL_SRANK_B]
-		3:
-			rank_arr = [Global.HELL_SRANK_S,
-						Global.HELL_SRANK_A,
-						Global.HELL_SRANK_B]
-	
-	if rank_arr[0][Global.CURRENT_LEVEL] == 0:
-		$Timervbox / HBoxContainer / Rank.min_value = 0
-		$Timervbox / HBoxContainer / Rank.max_value = 1
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[4]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[4]
-	if Global.level_time_raw < rank_arr[0][Global.CURRENT_LEVEL]:
-		$Timervbox / HBoxContainer / Rank.min_value = 0
-		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[0][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[0]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[1]
-	elif Global.level_time_raw < rank_arr[1][Global.CURRENT_LEVEL]:
-		$Timervbox / HBoxContainer / Rank.min_value = rank_arr[0][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[1][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[1]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[2]
-	elif Global.level_time_raw < rank_arr[2][Global.CURRENT_LEVEL]:
-		$Timervbox / HBoxContainer / Rank.min_value = rank_arr[1][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[2][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[2]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[3]
-	else:
-		$Timervbox / HBoxContainer / Rank.min_value = 0
-		$Timervbox / HBoxContainer / Rank.max_value = 1
-		
 func _physics_process(delta):
 	$Ammovbox / HBoxContainer / Ammo_Image.rect_rotation += ammo_rotation
 	ammo_rotation = lerp(ammo_rotation, 0, 0.1)
@@ -282,7 +281,6 @@ func _physics_process(delta):
 	Global.level_time = str(minutes, ".", seconds, ".", milseconds)
 	Global.level_time_raw = time_now - time_start
 	t += 1
-	set_timebox()
 	shooter_line_length = lerp(shooter_line_length, 0, 0.2)
 	shot_reticle_radius = lerp(shot_reticle_radius, min_shot_reticle_radius, 0.2)
 	hit_reticle_radius = lerp(hit_reticle_radius, min_hit_reticle_radius, 0.2)
@@ -304,7 +302,7 @@ func _physics_process(delta):
 		
 func _process(delta):
 	process_time += 1
-	
+	set_timebox()
 	if fmod(process_time, 2) == 0 and toxic:
 		Toxic_UI.visible = not Toxic_UI.visible
 	elif Toxic_UI.visible == true:
