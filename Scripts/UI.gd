@@ -281,6 +281,7 @@ func _physics_process(delta):
 	Global.level_time = str(minutes, ".", seconds, ".", milseconds)
 	Global.level_time_raw = time_now - time_start
 	t += 1
+	set_timebox()
 	shooter_line_length = lerp(shooter_line_length, 0, 0.2)
 	shot_reticle_radius = lerp(shot_reticle_radius, min_shot_reticle_radius, 0.2)
 	hit_reticle_radius = lerp(hit_reticle_radius, min_hit_reticle_radius, 0.2)
@@ -302,7 +303,6 @@ func _physics_process(delta):
 		
 func _process(delta):
 	process_time += 1
-	set_timebox()
 	if fmod(process_time, 2) == 0 and toxic:
 		Toxic_UI.visible = not Toxic_UI.visible
 	elif Toxic_UI.visible == true:
