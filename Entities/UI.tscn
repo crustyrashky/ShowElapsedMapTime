@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Menu/menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=2]
@@ -6,40 +6,8 @@
 [ext_resource path="res://cranialbomb.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Fonts/MS33558.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Entities/UI/crosshair.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Textures/UI/HEALTH/0033.png" type="Texture" id=7]
-[ext_resource path="res://Textures/UI/HEALTH/0034.png" type="Texture" id=8]
-[ext_resource path="res://Textures/UI/HEALTH/0030.png" type="Texture" id=9]
-[ext_resource path="res://Textures/UI/HEALTH/0031.png" type="Texture" id=10]
-[ext_resource path="res://Textures/UI/HEALTH/0032.png" type="Texture" id=11]
-[ext_resource path="res://Textures/UI/HEALTH/0015.png" type="Texture" id=12]
-[ext_resource path="res://Textures/UI/HEALTH/0016.png" type="Texture" id=13]
-[ext_resource path="res://Textures/UI/HEALTH/0019.png" type="Texture" id=14]
-[ext_resource path="res://Textures/UI/HEALTH/0020.png" type="Texture" id=15]
-[ext_resource path="res://Textures/UI/HEALTH/0017.png" type="Texture" id=16]
-[ext_resource path="res://Textures/UI/HEALTH/0021.png" type="Texture" id=17]
-[ext_resource path="res://Textures/UI/HEALTH/0022.png" type="Texture" id=18]
-[ext_resource path="res://Textures/UI/HEALTH/0023.png" type="Texture" id=19]
-[ext_resource path="res://Textures/UI/HEALTH/0024.png" type="Texture" id=20]
-[ext_resource path="res://Textures/UI/HEALTH/0025.png" type="Texture" id=21]
-[ext_resource path="res://Textures/UI/HEALTH/0018.png" type="Texture" id=22]
-[ext_resource path="res://Textures/UI/HEALTH/0026.png" type="Texture" id=23]
-[ext_resource path="res://Textures/UI/HEALTH/0027.png" type="Texture" id=24]
-[ext_resource path="res://Textures/UI/HEALTH/0028.png" type="Texture" id=25]
-[ext_resource path="res://Textures/UI/HEALTH/0029.png" type="Texture" id=26]
-[ext_resource path="res://Textures/UI/HEALTH/0006.png" type="Texture" id=27]
-[ext_resource path="res://Textures/UI/HEALTH/0012.png" type="Texture" id=28]
-[ext_resource path="res://Textures/UI/HEALTH/0007.png" type="Texture" id=29]
-[ext_resource path="res://Textures/UI/HEALTH/0010.png" type="Texture" id=30]
-[ext_resource path="res://Textures/UI/HEALTH/0004.png" type="Texture" id=31]
-[ext_resource path="res://Textures/UI/HEALTH/0009.png" type="Texture" id=32]
-[ext_resource path="res://Textures/UI/HEALTH/0011.png" type="Texture" id=33]
-[ext_resource path="res://Textures/UI/HEALTH/0003.png" type="Texture" id=34]
-[ext_resource path="res://Textures/UI/HEALTH/0001.png" type="Texture" id=35]
-[ext_resource path="res://Textures/UI/HEALTH/0002.png" type="Texture" id=36]
-[ext_resource path="res://Textures/UI/HEALTH/0005.png" type="Texture" id=37]
-[ext_resource path="res://Textures/UI/HEALTH/0008.png" type="Texture" id=38]
-[ext_resource path="res://Textures/UI/HEALTH/0013.png" type="Texture" id=39]
-[ext_resource path="res://Textures/UI/HEALTH/0014.png" type="Texture" id=40]
+[ext_resource path="res://Textures/UI/UIDEATH.tres" type="Texture" id=7]
+[ext_resource path="res://MOD_CONTENT/ShowElapsedMapTime/Timervbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Fonts/gamefont(1).ttf" type="DynamicFontData" id=41]
 [ext_resource path="res://Textures/Menu/Handler/1.png" type="Texture" id=42]
 [ext_resource path="res://Maps/textures/base/Stone2.png" type="Texture" id=43]
@@ -54,7 +22,6 @@
 [ext_resource path="res://Sfx/Sniper/canthide.wav" type="AudioStream" id=52]
 [ext_resource path="res://Fonts/mingliut.tres" type="DynamicFont" id=53]
 [ext_resource path="res://Textures/UI/AMMO.png" type="Texture" id=54]
-[ext_resource path="res://MOD_CONTENT/ShowElapsedMapTime/Timervbox.tscn" type="PackedScene" id=55]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -101,98 +68,26 @@ use_filter = true
 extra_spacing_char = 4
 font_data = ExtResource( 41 )
 
-[sub_resource type="AnimatedTexture" id=6]
-flags = 2
-frames = 34
-fps = 24.5
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 34 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 31 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 37 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 27 )
-frame_5/delay_sec = 0.0
-frame_6/texture = ExtResource( 29 )
-frame_6/delay_sec = 0.0
-frame_7/texture = ExtResource( 38 )
-frame_7/delay_sec = 0.0
-frame_8/texture = ExtResource( 32 )
-frame_8/delay_sec = 0.0
-frame_9/texture = ExtResource( 30 )
-frame_9/delay_sec = 0.0
-frame_10/texture = ExtResource( 33 )
-frame_10/delay_sec = 0.0
-frame_11/texture = ExtResource( 28 )
-frame_11/delay_sec = 0.0
-frame_12/texture = ExtResource( 39 )
-frame_12/delay_sec = 0.0
-frame_13/texture = ExtResource( 40 )
-frame_13/delay_sec = 0.0
-frame_14/texture = ExtResource( 12 )
-frame_14/delay_sec = 0.0
-frame_15/texture = ExtResource( 13 )
-frame_15/delay_sec = 0.0
-frame_16/texture = ExtResource( 16 )
-frame_16/delay_sec = 0.0
-frame_17/texture = ExtResource( 22 )
-frame_17/delay_sec = 0.0
-frame_18/texture = ExtResource( 14 )
-frame_18/delay_sec = 0.0
-frame_19/texture = ExtResource( 15 )
-frame_19/delay_sec = 0.0
-frame_20/texture = ExtResource( 17 )
-frame_20/delay_sec = 0.0
-frame_21/texture = ExtResource( 18 )
-frame_21/delay_sec = 0.0
-frame_22/texture = ExtResource( 19 )
-frame_22/delay_sec = 0.0
-frame_23/texture = ExtResource( 20 )
-frame_23/delay_sec = 0.0
-frame_24/texture = ExtResource( 21 )
-frame_24/delay_sec = 0.0
-frame_25/texture = ExtResource( 23 )
-frame_25/delay_sec = 0.0
-frame_26/texture = ExtResource( 24 )
-frame_26/delay_sec = 0.0
-frame_27/texture = ExtResource( 25 )
-frame_27/delay_sec = 0.0
-frame_28/texture = ExtResource( 26 )
-frame_28/delay_sec = 0.0
-frame_29/texture = ExtResource( 9 )
-frame_29/delay_sec = 0.0
-frame_30/texture = ExtResource( 10 )
-frame_30/delay_sec = 0.0
-frame_31/texture = ExtResource( 11 )
-frame_31/delay_sec = 0.0
-frame_32/texture = ExtResource( 7 )
-frame_32/delay_sec = 0.0
-frame_33/texture = ExtResource( 8 )
-frame_33/delay_sec = 0.0
-
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 26
 extra_spacing_top = 20
 extra_spacing_char = 5
 font_data = ExtResource( 46 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 82
 font_data = ExtResource( 46 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 39
 font_data = ExtResource( 46 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 128, 128 )
 modulate_color = Color( 0.152941, 0.290196, 0.376471, 1 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 1
 border_width_top = 1
@@ -200,24 +95,24 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.0745098, 0.6, 0, 1 )
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 128, 128 )
 modulate_color = Color( 0.415686, 0.0980392, 0.0980392, 1 )
 
-[sub_resource type="StyleBoxTexture" id=13]
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 128, 128 )
 modulate_color = Color( 0.411765, 0.662745, 0.294118, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=14]
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="StyleBoxTexture" id=15]
+[sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 44 )
 region_rect = Rect2( 0, 0, 256, 256 )
 modulate_color = Color( 0.372549, 0.0823529, 0.0823529, 1 )
 
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=15]
 content_margin_left = 3.0
 content_margin_right = 3.0
 content_margin_top = 3.0
@@ -226,17 +121,17 @@ texture = ExtResource( 44 )
 region_rect = Rect2( 0, 0, 256, 256 )
 modulate_color = Color( 0.709804, 1, 0, 0.533333 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.352941, 0.239216, 0.239216, 1 )
 expand_margin_left = 6.0
 expand_margin_right = 6.0
 expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.14902, 1, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=19]
+[sub_resource type="StyleBoxFlat" id=18]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -252,40 +147,40 @@ shadow_color = Color( 1, 0, 0, 0 )
 shadow_size = 18
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=19]
 content_margin_left = 7.0
 content_margin_right = 7.0
 content_margin_top = 7.0
 content_margin_bottom = 7.0
 bg_color = Color( 0.235294, 0.243137, 0.129412, 1 )
 
-[sub_resource type="StyleBoxFlat" id=21]
+[sub_resource type="StyleBoxFlat" id=20]
 content_margin_left = 7.0
 content_margin_right = 7.0
 content_margin_top = 3.0
 content_margin_bottom = 3.0
 bg_color = Color( 0.215686, 0.0823529, 0.0823529, 1 )
 
-[sub_resource type="StyleBoxFlat" id=22]
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.156863, 0.129412, 0.129412, 1 )
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=22]
 content_margin_left = 7.0
 content_margin_right = 7.0
 content_margin_top = 3.0
 content_margin_bottom = 3.0
 bg_color = Color( 0.321569, 0.360784, 0.258824, 1 )
 
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 1, 0, 0, 1 )
+
 [sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=25]
-bg_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=26]
 bg_color = Color( 0, 1, 0.0627451, 1 )
 
-[sub_resource type="StyleBoxFlat" id=27]
+[sub_resource type="StyleBoxFlat" id=26]
 bg_color = Color( 0.572549, 0.25098, 0.25098, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -293,29 +188,29 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 0.188235, 0.211765, 0.105882, 1 )
 
-[sub_resource type="StyleBoxFlat" id=28]
+[sub_resource type="StyleBoxFlat" id=27]
 bg_color = Color( 0.360784, 0.145098, 0.145098, 1 )
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="DynamicFont" id=28]
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 5
 extra_spacing_bottom = 5
 extra_spacing_char = 1
 font_data = ExtResource( 41 )
 
-[sub_resource type="Theme" id=30]
-default_font = SubResource( 29 )
+[sub_resource type="Theme" id=29]
+default_font = SubResource( 28 )
 Button/colors/font_color = Color( 1, 0, 0, 1 )
 Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0.101961, 1, 0, 1 )
 Button/colors/font_color_pressed = Color( 0.156863, 0.294118, 0.0431373, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
-Button/styles/disabled = SubResource( 10 )
-Button/styles/focus = SubResource( 11 )
-Button/styles/hover = SubResource( 12 )
-Button/styles/normal = SubResource( 13 )
-Button/styles/pressed = SubResource( 12 )
+Button/styles/disabled = SubResource( 9 )
+Button/styles/focus = SubResource( 10 )
+Button/styles/hover = SubResource( 11 )
+Button/styles/normal = SubResource( 12 )
+Button/styles/pressed = SubResource( 11 )
 CheckBox/colors/font_color = Color( 1, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 1, 0, 0, 1 )
@@ -328,12 +223,12 @@ CheckBox/icons/checked = null
 CheckBox/icons/radio_checked = null
 CheckBox/icons/radio_unchecked = null
 CheckBox/icons/unchecked = null
-CheckBox/styles/disabled = SubResource( 14 )
-CheckBox/styles/focus = SubResource( 14 )
-CheckBox/styles/hover = SubResource( 14 )
-CheckBox/styles/hover_pressed = SubResource( 14 )
-CheckBox/styles/normal = SubResource( 14 )
-CheckBox/styles/pressed = SubResource( 14 )
+CheckBox/styles/disabled = SubResource( 13 )
+CheckBox/styles/focus = SubResource( 13 )
+CheckBox/styles/hover = SubResource( 13 )
+CheckBox/styles/hover_pressed = SubResource( 13 )
+CheckBox/styles/normal = SubResource( 13 )
+CheckBox/styles/pressed = SubResource( 13 )
 CheckButton/colors/font_color = Color( 1, 0, 0, 1 )
 CheckButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -451,7 +346,7 @@ ItemList/constants/icon_margin = 4
 ItemList/constants/line_separation = 2
 ItemList/constants/vseparation = 2
 ItemList/fonts/font = null
-ItemList/styles/bg = SubResource( 15 )
+ItemList/styles/bg = SubResource( 14 )
 ItemList/styles/bg_focus = null
 ItemList/styles/cursor = null
 ItemList/styles/cursor_unfocused = null
@@ -514,7 +409,7 @@ OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
 Panel/styles/panel = null
-PanelContainer/styles/panel = SubResource( 16 )
+PanelContainer/styles/panel = SubResource( 15 )
 PopupDialog/styles/panel = null
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
@@ -538,8 +433,8 @@ PopupPanel/styles/panel = null
 ProgressBar/colors/font_color = Color( 1, 0, 0, 1 )
 ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = null
-ProgressBar/styles/bg = SubResource( 17 )
-ProgressBar/styles/fg = SubResource( 18 )
+ProgressBar/styles/bg = SubResource( 16 )
+ProgressBar/styles/fg = SubResource( 17 )
 RichTextLabel/colors/default_color = Color( 0, 1, 0.219608, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0, 0, 0, 1 )
 RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -557,7 +452,7 @@ RichTextLabel/fonts/mono_font = null
 RichTextLabel/fonts/normal_font = null
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
-ScrollContainer/styles/bg = SubResource( 19 )
+ScrollContainer/styles/bg = SubResource( 18 )
 SpinBox/icons/updown = null
 TabContainer/colors/font_color_bg = Color( 0.207843, 0.254902, 0.0745098, 1 )
 TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -574,10 +469,10 @@ TabContainer/icons/increment = null
 TabContainer/icons/increment_highlight = null
 TabContainer/icons/menu = null
 TabContainer/icons/menu_highlight = null
-TabContainer/styles/panel = SubResource( 20 )
-TabContainer/styles/tab_bg = SubResource( 21 )
-TabContainer/styles/tab_disabled = SubResource( 22 )
-TabContainer/styles/tab_fg = SubResource( 23 )
+TabContainer/styles/panel = SubResource( 19 )
+TabContainer/styles/tab_bg = SubResource( 20 )
+TabContainer/styles/tab_disabled = SubResource( 21 )
+TabContainer/styles/tab_fg = SubResource( 22 )
 Tabs/colors/font_color_bg = Color( 1, 0, 0, 1 )
 Tabs/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 Tabs/colors/font_color_fg = Color( 1, 0, 0, 1 )
@@ -694,11 +589,11 @@ VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 24 )
-VScrollBar/styles/grabber_highlight = SubResource( 25 )
-VScrollBar/styles/grabber_pressed = SubResource( 26 )
-VScrollBar/styles/scroll = SubResource( 27 )
-VScrollBar/styles/scroll_focus = SubResource( 28 )
+VScrollBar/styles/grabber = SubResource( 23 )
+VScrollBar/styles/grabber_highlight = SubResource( 24 )
+VScrollBar/styles/grabber_pressed = SubResource( 25 )
+VScrollBar/styles/scroll = SubResource( 26 )
+VScrollBar/styles/scroll_focus = SubResource( 27 )
 VSeparator/constants/separation = 0
 VSeparator/styles/separator = null
 VSlider/icons/grabber = null
@@ -721,7 +616,7 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
-[sub_resource type="DynamicFont" id=31]
+[sub_resource type="DynamicFont" id=30]
 size = 20
 use_mipmaps = true
 use_filter = true
@@ -741,8 +636,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Timervbox" parent="." instance=ExtResource( 55 )]
 
 [node name="Ammovbox" type="VBoxContainer" parent="."]
 margin_right = 1023.0
@@ -952,25 +845,34 @@ align = 2
 
 [node name="UI_HBOX" type="HBoxContainer" parent="."]
 margin_right = 1023.0
-margin_bottom = 256.0
+margin_bottom = 282.0
 size_flags_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="UI_HBOX"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI_HBOX"]
+margin_right = 256.0
+margin_bottom = 282.0
+
+[node name="TextureRect" type="TextureRect" parent="UI_HBOX/VBoxContainer"]
 margin_right = 256.0
 margin_bottom = 256.0
-texture = SubResource( 6 )
+texture = ExtResource( 7 )
 
-[node name="Health" type="Label" parent="UI_HBOX/TextureRect"]
+[node name="Health" type="Label" parent="UI_HBOX/VBoxContainer/TextureRect"]
 margin_left = 174.0
 margin_top = 160.0
 margin_right = 40.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 0.509804, 0.509804, 1 )
 text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timervbox" parent="UI_HBOX/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 256.0
+margin_right = 256.0
+margin_bottom = 282.0
 
 [node name="Toxic" type="VBoxContainer" parent="UI_HBOX"]
 visible = false
@@ -981,7 +883,7 @@ margin_bottom = 256.0
 [node name="Toxic" type="Label" parent="UI_HBOX/Toxic"]
 margin_right = 540.0
 margin_bottom = 83.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.658824, 0.988235, 0, 1 )
 text = "TOXIC CRISIS"
 
@@ -989,7 +891,7 @@ text = "TOXIC CRISIS"
 margin_top = 83.0
 margin_right = 540.0
 margin_bottom = 123.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.682353, 0.360784, 0, 1 )
 text = "FLUSHING BIOLOGICAL SYSTEMS"
 
@@ -1028,7 +930,7 @@ margin_bottom = 226.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.99
-theme = SubResource( 30 )
+theme = SubResource( 29 )
 scroll_horizontal_enabled = false
 scroll_vertical_enabled = false
 
@@ -1040,7 +942,7 @@ margin_bottom = 221.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-custom_fonts/normal_font = SubResource( 31 )
+custom_fonts/normal_font = SubResource( 30 )
 text = "dsdsfdfafdfdaf
 fdafdafdfDdafda
 fd

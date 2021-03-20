@@ -2,6 +2,8 @@
 
 Cruelty Squad mod that shows time elapsed and current rank when you're playing a map
 
+If you don't have a mod loader, get the [CRUELTY SQUAD MOD LOADER](https://github.com/crustyrashky/crus-modloader)
+
 ## Install
 
 1. Download the [latest release](https://github.com/crustyrashky/ShowElapsedMapTime/releases/download/1.0/ShowElapsedMapTime.zip)

@@ -13,6 +13,8 @@ var UI_distance = 0
 var toxic = false
 var comms_color = Color(1, 1, 1, 0)
 var current_speaker = 0
+const HEALTH = preload("res://Textures/UI/UILIFE.tres")
+const DEATH = preload("res://Textures/UI/UIDEATH.tres")
 var font = preload("res://Fonts/gamefont(1).ttf")
 var sniper_lines:Array = ["I CAN SEE YOU", "TARGET ACQUIRED", "RUN PIG", "YOU CAN'T HIDE"]
 var sniper_audio:Array = ["res://Sfx/Sniper/Seeyou.wav", "res://Sfx/Sniper/targetacquired.wav", "res://Sfx/Sniper/runpig.wav", "res://Sfx/Sniper/canthide.wav"]
@@ -38,12 +40,6 @@ onready  var death_timer_label = $CenterContainer2 / Death_Timer_Label
 var AMMO_TEXTURE = preload("res://Textures/UI/AMMO.png")
 var MAG_TEXTURE = preload("res://Textures/UI/MAG.png")
 
-var RANK_TEXTURES: Array = [preload("res://Textures/rank_letters/S.png"),
-							preload("res://Textures/rank_letters/A.png"),
-							preload("res://Textures/rank_letters/B.png"),
-							preload("res://Textures/rank_letters/C.png"),
-							preload("res://Textures/rank_letters/N.png")]
-
 const HANDLER_FRAMES:Array = [preload("res://Textures/Menu/Handler/1.png"), 
 								preload("res://Textures/Menu/Handler/2.png"), 
 								preload("res://Textures/Menu/Handler/3.png"), 
@@ -67,13 +63,20 @@ var mdt2
 var mdt2_edge_count
 var m2
 onready  var eyevbox = $Eyevbox
-onready  var health_texture = $UI_HBOX / TextureRect
+onready  var health_texture = $UI_HBOX / VBoxContainer / TextureRect
 var notify:Label
 
+var RANK_TEXTURES: Array = [preload("res://Textures/rank_letters/S.png"),
+							preload("res://Textures/rank_letters/A.png"),
+							preload("res://Textures/rank_letters/B.png"),
+							preload("res://Textures/rank_letters/C.png"),
+							preload("res://Textures/rank_letters/N.png")]
 
 var rank_arr = [Global.LEVEL_RANK_S,
 				Global.LEVEL_RANK_A,
 				Global.LEVEL_RANK_B]
+
+onready var timebox = $UI_HBOX / VBoxContainer / Timervbox / HBoxContainer
 
 func init_timebox():
 	if Global.stock_mode:
@@ -86,33 +89,32 @@ func init_timebox():
 			rank_arr[0] = Global.HELL_SRANK_S
 
 func set_timebox():
-	$Timervbox / HBoxContainer / Level_time.text = " " + str(Global.level_time)
-	$Timervbox / HBoxContainer / Rank.value = Global.level_time_raw
+	timebox.get_node("Level_time").text = " " + str(Global.level_time)
+	timebox.get_node("Rank").value = Global.level_time_raw
 
 	if rank_arr[0][Global.CURRENT_LEVEL] == 0:
-		$Timervbox / HBoxContainer / Rank.min_value = 0
-		$Timervbox / HBoxContainer / Rank.max_value = 1
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[4]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[4]
+		timebox.get_node("Rank").min_value = 0
+		timebox.get_node("Rank").max_value = 1
+		timebox.get_node("Rank").texture_under = RANK_TEXTURES[4]
+		timebox.get_node("Rank").texture_progress = RANK_TEXTURES[4]
 	if Global.level_time_raw < rank_arr[0][Global.CURRENT_LEVEL]:
-		$Timervbox / HBoxContainer / Rank.min_value = 0
-		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[0][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[0]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[1]
+		timebox.get_node("Rank").min_value = 0
+		timebox.get_node("Rank").max_value = rank_arr[0][Global.CURRENT_LEVEL]
+		timebox.get_node("Rank").texture_under = RANK_TEXTURES[0]
+		timebox.get_node("Rank").texture_progress = RANK_TEXTURES[1]
 	elif Global.level_time_raw < rank_arr[1][Global.CURRENT_LEVEL]:
-		$Timervbox / HBoxContainer / Rank.min_value = rank_arr[0][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[1][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[1]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[2]
+		timebox.get_node("Rank").min_value = rank_arr[0][Global.CURRENT_LEVEL]
+		timebox.get_node("Rank").max_value = rank_arr[1][Global.CURRENT_LEVEL]
+		timebox.get_node("Rank").texture_under = RANK_TEXTURES[1]
+		timebox.get_node("Rank").texture_progress = RANK_TEXTURES[2]
 	elif Global.level_time_raw < rank_arr[2][Global.CURRENT_LEVEL]:
-		$Timervbox / HBoxContainer / Rank.min_value = rank_arr[1][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.max_value = rank_arr[2][Global.CURRENT_LEVEL]
-		$Timervbox / HBoxContainer / Rank.texture_under = RANK_TEXTURES[2]
-		$Timervbox / HBoxContainer / Rank.texture_progress = RANK_TEXTURES[3]
+		timebox.get_node("Rank").min_value = rank_arr[1][Global.CURRENT_LEVEL]
+		timebox.get_node("Rank").max_value = rank_arr[2][Global.CURRENT_LEVEL]
+		timebox.get_node("Rank").texture_under = RANK_TEXTURES[2]
+		timebox.get_node("Rank").texture_progress = RANK_TEXTURES[3]
 	else:
-		$Timervbox / HBoxContainer / Rank.min_value = 0
-		$Timervbox / HBoxContainer / Rank.max_value = 1
-		
+		timebox.get_node("Rank").min_value = 0
+		timebox.get_node("Rank").max_value = 1
 
 func _ready():
 	for i in range(0, len(RANK_TEXTURES)):
@@ -149,6 +151,11 @@ func _ready():
 	max_hit_reticle_radius = Global.resolution[1] / 10
 	
 	reload_pos.x = 1280 / 2
+	
+	if Global.death:
+		health_texture.texture = DEATH
+	else :
+		health_texture.texture = HEALTH
 
 func message(msg:String, npc:bool):
 	stop = true
@@ -232,10 +239,10 @@ func notify_timeout(new_notification):
 	new_notification.queue_free()
 func _draw():
 	
-	draw_ammo()
+	
 	draw_reload(reload_pos, reload_color)
 	
-	shot_line(shooter_pos)
+	
 	if health <= 0 and fmod(t, 3) == 0:
 		draw_cube()
 		draw_cube2()
@@ -254,17 +261,18 @@ func set_shooter_pos(shotpos):
 		shooter_pos = Vector2(shotpos.x, shotpos.z)
 
 func set_health(new_health):
-	$UI_HBOX / TextureRect / Health.text = str(ceil(new_health))
+	$UI_HBOX / VBoxContainer / TextureRect / Health.text = str(ceil(new_health))
 	health = float(ceil(new_health))
 func set_ammo(ammo, mag_ammo, max_mag_ammo, max_ammo):
 	$Ammovbox / HBoxContainer / Ammo.text = str(ammo)
+	
 	ammo_c = ammo
 	ammo_rotation += 2
 	mag_ammo_c = mag_ammo
 	max_ammo_c = max_ammo
 	max_mag_ammo_c = max_mag_ammo
+	
 	$Ammovbox / HBoxContainer / Mag_Ammo.text = str(mag_ammo)
-
 func _physics_process(delta):
 	$Ammovbox / HBoxContainer / Ammo_Image.rect_rotation += ammo_rotation
 	ammo_rotation = lerp(ammo_rotation, 0, 0.1)
@@ -287,22 +295,28 @@ func _physics_process(delta):
 	hit_reticle_radius = lerp(hit_reticle_radius, min_hit_reticle_radius, 0.2)
 	if health < 0:
 		health = 0
-	update()
+	if health <= 0 or Input.is_action_pressed("reload"):
+		update()
 	
 	rect_scale.x = Global.resolution[0] / 1280
 	rect_scale.y = Global.resolution[1] / 720
 	margin_left = Global.resolution[0] / 8
 	margin_top = Global.resolution[1] / 10
 	health_texture.texture.fps = clamp(100 - health, 24, 100)
-	health_texture.modulate = Color(1 - health * 0.01, health * 0.01, 0).from_hsv((health * 0.01) * 0.25, 1, 1)
+	var h = health
+	if Global.death:
+		h += 250
+	var clr = Color(1 - h * 0.01, h * 0.01, 0).from_hsv((h * 0.01) * 0.25, 1, 1)
+	health_texture.modulate = clr
 	if fmod(t, 30) == 0:
+		
 		var fps = Engine.get_frames_per_second()
 		fps_label.text = str(fps, "\n", Global.level_time_raw, "\n", Global.level_time)
 	if Global.player.died:
 		death_timer_label.text = str(stepify(death_timer.time_left, 0.01))
-		
 func _process(delta):
 	process_time += 1
+	
 	if fmod(process_time, 2) == 0 and toxic:
 		Toxic_UI.visible = not Toxic_UI.visible
 	elif Toxic_UI.visible == true:
