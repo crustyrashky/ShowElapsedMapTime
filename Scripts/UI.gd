@@ -1,3 +1,4 @@
+
 extends Control
 var t = 0
 var health = 100
@@ -78,20 +79,17 @@ var rank_arr = [Global.LEVEL_RANK_S,
 
 onready var timebox = $UI_HBOX / VBoxContainer / Timervbox / HBoxContainer
 
-func init_timebox():
-	if Global.stock_mode:
-		rank_arr[0] = Global.LEVEL_SRANK_S
-	if Global.hope_discarded:
-		rank_arr = [Global.HELL_RANK_S,
-					Global.HELL_RANK_A,
-					Global.HELL_RANK_B]
-		if Global.stock_mode:
-			rank_arr[0] = Global.HELL_SRANK_S
+var timebox_init = false
 
 func set_timebox():
 	timebox.get_node("Level_time").text = " " + str(Global.level_time)
 	timebox.get_node("Rank").value = Global.level_time_raw
-
+	if (Global.objectives > 0 and !timebox_init) or Global.player.disabled:
+		if Global.hope_discarded:
+			rank_arr = [Global.HELL_RANK_S, Global.HELL_RANK_A, Global.HELL_RANK_B]
+		if Global.stock_mode:
+			rank_arr[0] = Global.HELL_SRANK_S if Global.hope_discarded else Global.LEVEL_SRANK_S
+		timebox_init = true
 	if rank_arr[0][Global.CURRENT_LEVEL] == 0:
 		timebox.get_node("Rank").min_value = 0
 		timebox.get_node("Rank").max_value = 1
@@ -123,7 +121,6 @@ func _ready():
 		var nt = ImageTexture.new()
 		nt.create_from_image(img)
 		RANK_TEXTURES[i] = nt
-	init_timebox()
 	reload_font = $Notification_Box / Notification_Label.get_font("font")
 	Global.UI = self
 	Global.enemy_count = 0

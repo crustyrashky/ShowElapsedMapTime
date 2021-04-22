@@ -9,13 +9,13 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 255.0
+margin_top = 261.0
 margin_right = 1023.0
-margin_bottom = 281.0
+margin_bottom = 275.0
 
 [node name="Rank" type="TextureProgress" parent="HBoxContainer"]
 margin_right = 1.0
-margin_bottom = 26.0
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( 24, 24 )
 max_value = 1.0
 value = 1.0
@@ -26,9 +26,9 @@ __meta__ = {
 }
 
 [node name="Level_time" type="Label" parent="HBoxContainer"]
-margin_left = 1.0
-margin_right = 135.0
-margin_bottom = 26.0
+margin_left = 5.0
+margin_right = 65.0
+margin_bottom = 14.0
 custom_colors/font_color = Color( 0.00784314, 1, 0, 1 )
 text = " 0.00.000"
 valign = 1
